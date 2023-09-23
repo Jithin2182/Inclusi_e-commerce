@@ -4,7 +4,7 @@ const Data = {
       id: 1,
       discount: 50,
       cover: "./images/flash/flash-1.png",
-      name: "Shoes",
+      name: "Sneakers",
       price: 100,
     },
     {
