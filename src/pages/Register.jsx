@@ -42,34 +42,54 @@ const StyledButton = styled.button`
   opacity: ${(props) => (!props.enabled ? 0.5 : 1)};
 `;
 
-const Login = () => {
+const Register = () => {
   return (
     <Container>
-      <Heading>Login</Heading>
+      <Heading>Register</Heading>
       <form action="submit">
         <StyledInput
           type="text"
-          name="Username"
-          placeholder="Username or EmailID"
+          name="FirstName"
+          placeholder="FirstName"
           id="username"
           required
         />
-        <br/>
         <StyledInput
-          type="password"
-          name="Password"
-          placeholder="password"
-          id="password"
+          type="text"
+          name="Lastname"
+          placeholder="Lastname"
+          id="username"
           required
         />
-        <br/>
-        <StyledButton type="submit">
-          <Link to="/home">Login</Link>
-        </StyledButton>
+        <center>
+          <StyledInput
+            type="text"
+            name="EmailID"
+            placeholder="EmailID"
+            id="username"
+            required
+          />
+        </center>
+        <br />
+        <center>
+          <StyledInput
+            type="password"
+            name="Password"
+            placeholder="password"
+            id="password"
+            required
+          />
+        </center>
+        <br />
+        <center>
+          <StyledButton type="submit">
+            <Link to="/">Register</Link>
+          </StyledButton>
+        </center>
       </form>
-      <Link to='/register'>Are you a new user?</Link>
+      <Link to="/">Alredy have an account?</Link>
     </Container>
   );
 };
 
-export default Login;
+export default Register;

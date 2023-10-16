@@ -10,6 +10,7 @@ import Footer from "./common/footer/Footer";
 import Sdata from "./components/shops/Sdata";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   /*
@@ -89,6 +90,9 @@ function App() {
         <Switch>
         <Route path="/" exact>
           <Login />
+        </Route>
+        <Route path="/register" exact>
+          <Register />
         </Route>
           <Route path="/home" exact>
             <Pages
