@@ -1,5 +1,7 @@
 import React from "react"
 import "./style.css"
+import Layout from "../Layout"
+
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // Stpe: 7   calucate total of items
@@ -7,7 +9,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
 
   // prodcut qty total
   return (
-    <>
+    <Layout>
       <section className='cart-items'>
         <div className='container d_flex'>
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
@@ -65,7 +67,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   )
 }
 

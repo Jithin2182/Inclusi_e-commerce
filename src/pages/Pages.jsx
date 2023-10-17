@@ -1,4 +1,5 @@
 import React from "react"
+import Layout from "../common/Layout"
 import Home from "../components/MainPage/Home"
 import FlashDeals from "../components/flashDeals/FlashDeals"
 import TopCate from "../components/top/TopCate"
@@ -10,7 +11,7 @@ import Wrapper from "../components/wrapper/Wrapper"
 
 const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
   return (
-    <>
+    <Layout>
       <Home CartItem={CartItem} />
       <FlashDeals productItems={productItems} addToCart={addToCart} />
       <TopCate />
@@ -19,7 +20,7 @@ const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
       <Shop shopItems={shopItems} addToCart={addToCart} />
       <Annocument />
       <Wrapper />
-    </>
+    </Layout>
   )
 }
 

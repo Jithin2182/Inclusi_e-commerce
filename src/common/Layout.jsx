@@ -1,33 +1,11 @@
-import React, { useState } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Header from "./common/header/Header";
-import Products from "./pages/Products";
-import Pages from "./pages/Pages";
-import Data from "./components/Data";
-import Cart from "./common/Cart/Cart";
-// import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Order from "./pages/Order";
-import Vendor from "./pages/Vendor";
+import React,{useState} from "react";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
+import Data from "./../components/Data";
+import Cart from "./Cart/Cart";
+import Sdata from "./../components/shops/Sdata";
 
-function App() {
-  /*
-  step1 :  const { productItems } = Data 
-  lai pass garne using props
-  
-  Step 2 : item lai cart ma halne using useState
-  ==> CartItem lai pass garre using props from  <Cart CartItem={CartItem} /> ani import garrxa in cartItem ma
- 
-  Step 3 :  chai flashCard ma xa button ma
-
-  Step 4 :  addToCart lai chai pass garne using props in pages and cart components
-  */
-
-  //Step 1 :
+const Layout = ({ children }) => {
   const { productItems } = Data;
   const { shopItems } = Sdata;
 
@@ -87,50 +65,11 @@ function App() {
 
   return (
     <>
-      <Router>
-        {/* <Header CartItem={CartItem} /> */}
-        <Switch>
-          <Route path="/" exact>
-            <Login />
-          </Route>
-          <Route path="/register" exact>
-            <Register />
-          </Route>
-          <Route path="/home" exact>
-            <Pages
-              productItems={productItems}
-              addToCart={addToCart}
-              shopItems={shopItems}
-            />
-          </Route>
-          <Route path="/products" exact>
-            <Products
-              productItems={productItems}
-              addToCart={addToCart}
-              shopItems={shopItems}
-            />
-          </Route>
-          <Route path="/contact" exact>
-            <Contact />
-          </Route>
-          <Route path="/track" exact>
-            <Order />
-          </Route>
-          <Route path="/vendor" exact>
-            <Vendor />
-          </Route>
-          <Route path="/cart" exact>
-            <Cart
-              CartItem={CartItem}
-              addToCart={addToCart}
-              decreaseQty={decreaseQty}
-            />
-          </Route>
-        </Switch>
-        {/* <Footer /> */}
-      </Router>
+      <Header CartItem={CartItem} />
+      {children}
+      <Footer />
     </>
   );
-}
+};
 
-export default App;
+export default Layout;

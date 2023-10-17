@@ -1,52 +1,103 @@
-import React from 'react';
-import styled from 'styled-components';
-import { StyledForm, StyledInput, StyledButton, StyledAlert, StyledLabel } from './../components/contact/style';
+import React from "react";
+import styled from "styled-components";
+import Layout from "../common/Layout";
+import ima from "./../images/flash-1.png";
 
-function LoginForm() {
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [passwordInvalid, setPasswordInvalid] = React.useState(false);
-    const [enabled, setEnabled] = React.useState(false);
+const Container = styled.div`
+  margin: 50px;
+  color: white;
+  background: #053056;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+`;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+`;
 
-        // validate password and set passwordInvalid state accordingly
-        if (password.length < 8) {
-            setPasswordInvalid(true);
-        } else {
-            setPasswordInvalid(false);
-        }
-    }
+const Form = styled.form`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+`;
 
-    const usernameEntered = (e) => {
-        setUsername(e.target.value);
-        // buttonEnabled(username, password)
-    }
+const Input = styled.input`
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e7e6e6;
+  margin: 10px;
+`;
+const TextArea = styled.textarea`
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #e7e6e6;
+  margin: 10px;
+`;
 
-    const passwordEntered = (e) => {
-        setPassword(e.target.value);
-        // buttonEnabled(username, password)
-    }
+const StyledButton = styled.button`
+  width: 400px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:enabled {
+    opacity: 1;
+  }
+  opacity: ${(props) => (!props.enabled ? 0.5 : 1)};
+`;
 
-    const buttonEnabled = (username, password) => {
-        if(username.length > 0 && password.length > 0) {
-            setEnabled(true);
-        } else {
-            setEnabled(false);
-        }
-    }
+const Image = styled.img`
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 10px 10px 10px red;
+`
 
-    return (
-        <StyledForm onSubmit={handleSubmit}>
-            <StyledLabel>Username:</StyledLabel>
-            <StyledInput type="text" value={username} onChange={e => usernameEntered(e)}/>
-            <StyledLabel invalid={passwordInvalid}>Password:</StyledLabel>
-            <StyledInput type="password" value={password} onChange={(e) => passwordEntered(e)} />
-            {passwordInvalid && <StyledAlert>Password is invalid.</StyledAlert>}
-            <StyledButton type="submit" disabled={!username || !password}>Login</StyledButton>
-        </StyledForm>
-    )
-}
+const Contact = () => {
+  const submit = (e) => {
+    alert("Your Query was submitted!!");
+  };
 
-export default LoginForm;
+  return (
+    <Layout>
+      <Container>
+        <Flex>
+          <div>
+            <Image
+              src={
+              'https://res.cloudinary.com/dltvvelmx/image/upload/v1697540638/Agred/15184423_5579058_k5ufmc.jpg'  
+              }
+              alt="Image"
+            />
+          </div>
+          <div>
+            <Form action={submit}>
+              <Input type="text" placeholder="Name" />
+              <Input type="mobile" placeholder="Mobile" />
+              <Input type="email" placeholder="example@gmail.com" />
+              <TextArea placeholder="How may I help you?" rows={4} cols={10} />
+              <StyledButton type="submit">Send</StyledButton>
+            </Form>
+          </div>
+        </Flex>
+      </Container>
+    </Layout>
+  );
+};
+
+export default Contact;

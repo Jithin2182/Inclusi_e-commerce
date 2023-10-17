@@ -31,7 +31,7 @@ const Navbar = () => {
                 <Link to='/track'>track my order</Link>
               </li>
               <li>
-                <Link to='/user'>Account</Link>
+                <Link to='/contact'>Contact</Link>
               </li>
               {/* <li>
                 <Link to='/contact'>contact</Link>

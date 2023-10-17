@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 
 const Heading = styled.h1`
   font-size: large;
@@ -24,8 +25,14 @@ const StyledInput = styled.input`
   margin: 10px;
 `;
 
+const Head = styled.h1`
+  color: green;
+  font-size: 100px;
+  font-weight: bolder;
+`
+
 const StyledButton = styled.button`
-  width: 400px;
+  width: 70px;
   background-color: #4caf50;
   color: white;
   padding: 10px;
@@ -43,31 +50,62 @@ const StyledButton = styled.button`
 `;
 
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [Locate, setLocate] = useState("/");
+  const [enabled, setEnabled] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // validate password and set passwordInvalid state accordingly
+    if (password === "inclusi") {
+      setLocate("/home");
+    } else {
+      alert("Password is Incorrect");
+    }
+  };
+
+  const usernameEntered = (e) => {
+    setUsername(e.target.value);
+    // buttonEnabled(username, password)
+  };
+
+  const passwordEntered = (e) => {
+    setPassword(e.target.value);
+    // buttonEnabled(username, password)
+  };
+
   return (
     <Container>
+      <Head>INCLUSISHOP</Head>
       <Heading>Login</Heading>
-      <form action="submit">
+      <form onSubmit={handleSubmit} action="submit">
         <StyledInput
           type="text"
           name="Username"
           placeholder="Username or EmailID"
           id="username"
           required
+          value={username}
+          onChange={(e) => usernameEntered(e)}
         />
-        <br/>
+        <br />
         <StyledInput
           type="password"
           name="Password"
           placeholder="password"
           id="password"
           required
+          value={password}
+          onChange={(e) => passwordEntered(e)}
         />
-        <br/>
+        <br />
         <StyledButton type="submit">
-          <Link to="/home">Login</Link>
+          <Link to={Locate} >Login</Link>
         </StyledButton>
       </form>
-      <Link to='/register'>Are you a new user?</Link>
+      <Link to="/register">Are you a new user?</Link>
     </Container>
   );
 };
